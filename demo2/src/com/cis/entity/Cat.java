@@ -10,5 +10,8 @@ public class Cat extends Animal {
         return name + "12";
     }
 
+    public String doSomething(){
+        return "hello world !";
+    }
 
 }

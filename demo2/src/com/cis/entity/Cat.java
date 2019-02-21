@@ -7,7 +7,7 @@ public class Cat extends Animal {
 
         String name = super.getName();
 
-        return name + "1";
+        return name + "12";
     }
 
 

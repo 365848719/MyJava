@@ -1,7 +1,11 @@
 package com.scz.demo.repository;
 
 import com.scz.demo.bean.Bill;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BillRepository extends JpaRepository<Bill, String> {
+import java.util.List;
+
+
+public interface BillRepository  {
+     Bill getByHisId(String hisId);
+     List<Bill> getBills(String tableParBegin, String tableEnd);
 }

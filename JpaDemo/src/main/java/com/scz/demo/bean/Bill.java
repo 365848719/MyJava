@@ -1,16 +1,25 @@
 package com.scz.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javafx.beans.binding.SetBinding;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Table(name = "DW_BILL")
 @Entity
 public class Bill {
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE},mappedBy = "bill")
+    private Set<BillDetail> details;
+    public Set<BillDetail> getDetails() {
+        return details;
+    }
+    public void setDetails(Set<BillDetail> details) {
+        this.details = details;
+    }
 
     @Id
     @Column(name = "hisid")

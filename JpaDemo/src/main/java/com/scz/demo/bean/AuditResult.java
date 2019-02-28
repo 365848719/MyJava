@@ -12,12 +12,6 @@ public class AuditResult {
     @Column(name = "id")
     private String id;
 
-    @JsonIgnore
-    private Bill bill;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "detail_id")
-    private BillDetail detail;
 
     @Column(name = "claim_id")
     private String claimId;
@@ -42,12 +36,7 @@ public class AuditResult {
         this.claimId = claimId;
     }
 
-    public BillDetail getDetail() {
-        return detail;
-    }
-    public void setDetail(BillDetail detail) {
-        this.detail = detail;
-    }
+
 
     public String getRuleCode() {
         return ruleCode;
@@ -62,4 +51,27 @@ public class AuditResult {
     public void setDetailId(String detailId) {
         this.detailId = detailId;
     }
+
+    /*
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "detail_id")
+    private BillDetail detail;
+
+    public BillDetail getDetail() {
+        return detail;
+    }
+    public void setDetail(BillDetail detail) {
+        this.detail = detail;
+    }
+
+    @JsonIgnore
+    private Bill bill;
+    public Bill getBill() {
+        return bill;
+    }
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+    */
+
 }

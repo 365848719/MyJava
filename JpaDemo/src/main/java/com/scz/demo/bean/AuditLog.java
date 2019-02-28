@@ -3,7 +3,9 @@ package com.scz.demo.bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "AD_LOG")
 @Entity
 public class AuditLog {
     @Id

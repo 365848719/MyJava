@@ -17,17 +17,17 @@ public class BillController {
     MyBillRepository billRepository;
 
     @RequestMapping("/bill/findById")
-    public Optional<Bill> findById() {
+    public Bill findById() {
         String id = "1001-00000334.1301042-1211232180-1";
         Optional<Bill> billList = billRepository.findById(id);
+        Bill b = null;
 
-        System.out.println(billList);
-        return billList;
-    }
+        if (billList.isPresent()) {
+            b = billList.get();
+        }
 
-    @RequestMapping("/bill/save")
-    public void save(Bill b) {
-        billRepository.save(b);
+        System.out.println(b);
+        return b;
     }
 
 }

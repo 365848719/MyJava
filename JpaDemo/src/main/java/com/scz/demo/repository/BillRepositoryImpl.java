@@ -1,6 +1,7 @@
 package com.scz.demo.repository;
 
 import com.scz.demo.bean.Bill;
+import org.assertj.core.internal.Iterables;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
 import org.springframework.data.jpa.domain.Specification;
@@ -43,6 +44,15 @@ public class BillRepositoryImpl implements BillRepository {
 
         Query query = em.createNativeQuery(builder.toString());
         query.setParameter(1, hisId);
+
+        /*
+        List<Bill> myList = query.getResultList();
+        if (!myList.isEmpty())
+        {
+            Bill _bill = (Bill) myList.get(0);
+            System.out.println(_bill);
+        }
+*/
 
         Object[] r = (Object[]) query.getSingleResult();
 

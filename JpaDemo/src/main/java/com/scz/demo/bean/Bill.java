@@ -11,6 +11,7 @@ import java.util.Set;
 @Entity
 public class Bill {
 
+    /*
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE},mappedBy = "bill")
     private Set<BillDetail> details;
@@ -20,6 +21,8 @@ public class Bill {
     public void setDetails(Set<BillDetail> details) {
         this.details = details;
     }
+
+*/
 
     @Id
     @Column(name = "hisid")

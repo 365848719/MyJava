@@ -10,6 +10,7 @@ public class BillDetail {
     @Column(name = "id")
     private String id;
 
+    /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pid")
     private Bill bill;
@@ -28,6 +29,7 @@ public class BillDetail {
     public void setAuditResults(Set<AuditResult> auditResults) {
         this.auditResults = auditResults;
     }
+*/
 
     @Column(name = "item_id")
     private String itmeId;

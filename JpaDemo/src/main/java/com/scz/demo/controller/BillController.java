@@ -19,7 +19,8 @@ public class BillController {
     @RequestMapping("/bill/findById")
     public Optional<Bill> findById() {
         String id = "1001-00000334.1301042-1211232180-1";
-        Optional billList = billRepository.findById(id);
+        Optional<Bill> billList = billRepository.findById(id);
+
         System.out.println(billList);
         return billList;
     }

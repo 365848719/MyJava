@@ -1,6 +1,10 @@
 package com.scz.demo.repository;
 
 import com.scz.demo.bean.Bill;
+import com.scz.demo.bean.BillDetail;
+import com.scz.demo.bean.dto.BillDetailDto;
+import com.scz.demo.bean.dto.BillDto;
+import com.scz.demo.tools.DateHelper;
 import org.assertj.core.internal.Iterables;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
@@ -24,6 +28,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 @Repository
@@ -52,7 +57,7 @@ public class BillRepositoryImpl implements BillRepository {
             Bill _bill = (Bill) myList.get(0);
             System.out.println(_bill);
         }
-*/
+        */
 
         Object[] r = (Object[]) query.getSingleResult();
 
@@ -104,6 +109,79 @@ public class BillRepositoryImpl implements BillRepository {
         List result = query.getResultList();
 
         return result;
+    }
+
+    public BillDto getByHisId2(String hisId) {
+
+        StringBuilder builder = new StringBuilder("SELECT B.hisid ,\n" +
+                "       B.BILLDATE ,\n" +
+                "       B.ID AS BillId ," +
+                "D.ID AS DetailId,\n" +
+                "       D.PID,\n" +
+                "       D.ITEM_ID,\n" +
+                "       D.ITEM_DATE " +
+                "  FROM DW_BILL B ");
+        builder.append(" LEFT JOIN DW_BILLDETAIL D\n" +
+                "    ON B.HISID = D.PID\n" +
+                "       AND B.TABLE_PAR = D.TABLE_PAR ");
+
+        builder.append(" WHERE 1=1 ");
+        builder.append(" AND B.hisid = ?1 ");
+
+        Query query = em.createNativeQuery(builder.toString());
+        query.setParameter(1, hisId);
+
+        List bills = query.getResultList();
+
+        List<BillDto> billDtos ;
+
+        /*
+        for (Object[] r : bills) {
+            BillDto b = new BillDto();
+
+            b.setHisId(r[0].toString());
+            b.setId(r[1].toString());
+
+            String detailId = r[3].toString();
+            String pId = r[4].toString();
+            String itemId = r[5].toString();
+            String itemName = r[6].toString();
+            Date itemDate = DateHelper.parse(r[7]);
+
+            BillDetailDto billDetailDto = new BillDetailDto(detailId,pId,itemId,itemName,itemDate);
+
+            b.setDetails(billDetailDto);
+
+            System.out.println(r);
+        }
+*/
+
+       /* b.setHisId(r[0].toString());
+        b.setId(r[1].toString());
+
+        String detailId = r[3].toString();
+        String pId = r[4].toString();
+        String itemId = r[5].toString();
+        String itemName = r[6].toString();
+        Date itemDate = DateHelper.parse(r[7]);
+
+        BillDetailDto billDetailDto = new BillDetailDto(detailId,pId,itemId,itemName,itemDate);
+
+        b.setDetails(billDetailDto);*/
+
+        /*Timestamp ts = (Timestamp) r[1];
+        Date d2 = null;
+        try {
+            d2 = ts;
+            System.out.println(d2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        b.setBillDate(d2);*/
+
+        return null;
+
     }
 
 }

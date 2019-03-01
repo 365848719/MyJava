@@ -1,6 +1,7 @@
 package com.scz.demo.service;
 
 import com.scz.demo.bean.Bill;
+import com.scz.demo.bean.dto.BillDto;
 import com.scz.demo.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,11 @@ public class BillServiceImpl implements BillService {
     @Override
     public List<Bill> getBills(String tableParBegin, String tableParEnd) {
         return repository.getBills(tableParBegin,tableParEnd);
+    }
+
+    @Override
+    public BillDto getByHisId2(String hisId) {
+        return repository.getByHisId2(hisId);
     }
 
 }

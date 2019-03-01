@@ -1,6 +1,7 @@
 package com.scz.demo.controller;
 
 import com.scz.demo.bean.Bill;
+import com.scz.demo.bean.dto.BillDto;
 import com.scz.demo.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +32,10 @@ public class Bill2Controller {
         return list;
     }
 
+    @RequestMapping("bill2/getBillByHisid2")
+    BillDto getByHisId2(String hisId){
+         hisId = "1001-00000334.1301042-1211232180-1";
+         return billService.getByHisId2(hisId);
+    }
 
 }

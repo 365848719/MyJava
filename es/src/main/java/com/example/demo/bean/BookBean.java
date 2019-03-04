@@ -3,7 +3,7 @@ package com.example.demo.bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "scz_book", type = "_doc")
+@Document(indexName = "es_book", type = "_doc")
 public class BookBean {
     @Id
     private String id;

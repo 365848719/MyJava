@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @RestController
-public class ElasticController {
+public class BookController {
     @Autowired
     private BookService bookService;
 
@@ -41,12 +41,13 @@ public class ElasticController {
         return book;
     }
 
-    @RequestMapping("/save")
+    @RequestMapping("/book/save")
     @ResponseBody
     public void Save(){
         BookBean book=new BookBean("1","ES入门教程","scz","2018-10-01");
         System.out.println(book);
         bookService.save(book);
+
     }
 
 }
